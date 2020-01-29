@@ -68,4 +68,3 @@
 
 // Using pipe
 readStream.pipe(gunzip).pipe(writeStream);
-
