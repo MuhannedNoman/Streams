@@ -57,12 +57,14 @@
  */
 
  const fs = require('fs');
+ const zlib = require('zlib');
+ const gzip = zlib.createGzip();
  const readStream = fs.createReadStream('./example.txt','utf8');
- const writeStream = fs.createWriteStream('example-2.txt');
+ const writeStream = fs.createWriteStream('example-2.txt.gz');
  // Using Emitters
 //  readStream.on('data',(chunk)=>{
 //     writeStream.write(chunk);
 //  });
 
 // Using pipe
-readStream.pipe(writeStream);
+readStream.pipe(gzip).pipe(writeStream);
